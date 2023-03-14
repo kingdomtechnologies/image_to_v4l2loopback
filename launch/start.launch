@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="image_loopback" pkg="image_to_v4l2loopback" type="stream" output="screen" required="true" >
+    <param name="image"  value="/camera/color/image_raw" />
+    <param name="queue_size"  value="50" />    
+    <param name="device" value="/dev/video5" />
+    <param name="width"  value="640" />
+    <param name="height" value="480" />
+    <param name="format" value="YV12" />
+  </node>
+</launch>

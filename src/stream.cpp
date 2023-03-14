@@ -120,10 +120,13 @@ public:
     }
     int queue_size = 1;
     ros::param::get("~queue_size", queue_size);
+    std::string name = "image";
+    ros::param::get("~image", name);
     ROS_INFO("streaming images from '%s' to '%s' w/ queue-size=%u",
-             ros::names::resolve("image", true).c_str(), video_device.c_str(),
+             name.c_str(), video_device.c_str(),
              queue_size);
-    image_stream_ = std::make_unique<ImageStream>("image", image_converter, dev, queue_size);
+  
+    image_stream_ = std::make_unique<ImageStream>(name, image_converter, dev, queue_size);
   }
 
 private:
